@@ -36,12 +36,14 @@ body {
     justify-content: space-evenly;
     align-items: center;
     padding: 8px;
+    border: 3px solid black;
 }
 
 .screen {
-    width: 350px;
-    height: 70px;
+    width: 95%;
+    height: 18%;
     background-color: rgb(20, 143, 57);
+    border: 3px solid black;
 }
 
 footer {
@@ -73,6 +75,33 @@ a {
 }
 
 .button {
+    background-color: #F2F2F2;
+    color: #444;
     width: 80px;
     height: 60px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 3px solid black;  
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #cac8c8;
+}
+
+.zero {
+    background-color: gold;
+}
+
+.equal {
+    background-color: lightblue;
+}
+
+.clear {
+    background-color: rgb(238, 81, 81);
+}
+
+.dot {
+    background-color: orange;
 }
