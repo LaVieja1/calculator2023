@@ -14,6 +14,16 @@ function insert(value) {
     screen.value = expression;
 }
 
+function clearScreen() {
+    expression = '';
+    screen.value = '';
+}
+
+function del() {
+    expression = expression.slice(0, -1);
+    screen.value = expression;
+}
+
 
 function add(a, b) {
     return a + b;
