@@ -15,15 +15,19 @@
     <div class="main-container">
         <h1>Calculadora</h1>
         <div class="calculator">
-            <div class="screen">
-                <input type="text" id="result" disabled>
+            <div class="top">
+                <div class="screen">
+                    <input type="text" id="result-previous" disabled>
+                    <input type="text" id="result" disabled>
+                </div>
+                <button class="button clear" onclick="clearScreen()">C</button>
             </div>
             <div class="buttons">
                 <div class="button-row">
                     <button class="button" onclick="insert('7')">7</button>
                     <button class="button" onclick="insert('8')">8</button>
                     <button class="button" onclick="insert('9')">9</button>
-                    <button class="button" onclick="insert('/')">/</button>
+                    <button class="button" onclick="insert('*')">*</button>
                 </div>
                 <div class="button-row">
                     <button class="button" onclick="insert('4')">4</button>
@@ -38,10 +42,10 @@
                     <button class="button" onclick="insert('+')">+</button>
                 </div>
                 <div class="button-row">
-                    <button class="button clear" onclick="clearScreen()">C</button>
-                    <button class="button zero" onclick="insert('0')">0</button>
                     <button class="button del" onclick="del()">DEL</button>
-                    <button class="button equal">=</button>
+                    <button class="button zero" onclick="insert('0')">0</button>
+                    <button class="button" onclick="insert('/')">/</button>
+                    <button class="button equal" onclick="operate(operator, firstNumber, expression)">=</button>
                 </div>
             </div>
         </div>
