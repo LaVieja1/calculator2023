@@ -7,9 +7,6 @@ const operators = document.querySelectorAll('.operator');
 const screenCurrent = document.querySelector('#result');
 const screenPrevious = document.querySelector("#result-previous");
 
-
-screenPrevious.value = 2;
-
 let currentValue = '';
 let previousValue = '';
 let operator = '';
@@ -21,6 +18,12 @@ numbers.forEach((number) => number.addEventListener("click", function(e) {
     screenCurrent.value = currentValue;
 }));
 
+operators.forEach((op) => op.addEventListener("click", function(e) {
+    handleOperator(e.target.textContent);
+    screenPrevious.value = previousValue + " " + operator;
+    screenCurrent.value = currentValue;
+}));
+
 
 /// FUNCIONES
 
@@ -29,6 +32,13 @@ function handleNumber(num) {
         currentValue += num;
     }
 }
+
+function handleOperator(op) {
+    operator = op;
+    previousValue = currentValue;
+    currentValue = '';
+}
+
 /*
 function insert(value) {
     if (value == "+") {
