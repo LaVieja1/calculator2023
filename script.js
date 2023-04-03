@@ -32,6 +32,20 @@ clear.addEventListener("click", function() {
     screenPrevious.value = '';
 })
 
+equal.addEventListener("click", function() {
+    
+    if (currentValue != '' && previousValue != '') {
+        calculate();
+        screenPrevious.value = '';
+        if (previousValue.length <= 6) {
+            screenCurrent.value = previousValue;
+        } else {
+            screenCurrent.value = previousValue.slice(0, 6) + "...";
+        }
+    }
+
+});
+
 /// FUNCIONES
 
 function handleNumber(num) {
@@ -46,30 +60,31 @@ function handleOperator(op) {
     currentValue = '';
 }
 
-/*
-function insert(value) {
-    if (value == "+") {
-        previousValue = currentValue;
-        currentValue = '';
-        operator = "+";
-    } else if (value == "-") {
-        previousValue = currentValue;
-        currentValue = '';
-        operator = "-";
-    } else if (value == '*') {
-        previousValue = currentValue;
-        currentValue = '';
-        operator = "*";
-    } else if (value == '/') {
-        previousValue = currentValue;
-        currentValue = '';
-        operator = "/";
-    } 
+function calculate() {
+    previousValue = Number(previousValue);
+    currentValue = Number(currentValue);
 
-    currentValue += value;
-    screenCurrent.value = currentValue;
+    if (operator === "+") {
+        previousValue += currentValue;
+    } else if (operator === '-') {
+        previousValue -= currentValue;
+    } else if (operator === 'x') {
+        previousValue *= currentValue;
+    } else {
+        previousValue /= currentValue;
+    }
+
+    previousValue = roundNumber(previousValue);
+    previousValue = previousValue.toString();
+
+    currentValue = previousValue.toString();
+
+    console.log(previousValue);
 }
-*/
+
+function roundNumber(num) {
+    return Math.round(num * 1000) / 1000;
+}
 
 function del() {
     currentValue = currentValue.slice(0, -1);
@@ -99,22 +114,4 @@ function divide(a, b) {
     previousValue = "";
     currentValue = (a / b);
     screenCurrent.value = currentValue;
-}
-
-function operate(operator, a, b) {
-    a = Number(a);
-    b = Number(b);
-    switch (operator) {
-        case '+' :
-            return add(a, b);
-        case '-' :
-            return subtract(a, b);
-        case '*' :
-            return multiply(a, b);
-        case '/' :
-            if (b == 0) return null;
-            return divide(a, b);
-        default:
-            return null;
-    }
 }
