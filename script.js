@@ -14,8 +14,6 @@ let operator = '';
 
 /// EventListeners
 
-window.addEventListener('keydown', handleKeyboard);
-
 numbers.forEach((number) => number.addEventListener("click", function(e) {
     handleNumber(e.target.textContent);
     screenCurrent.value = currentValue;
@@ -28,7 +26,11 @@ operators.forEach((op) => op.addEventListener("click", function(e) {
 }));
 
 clear.addEventListener("click", function() {
-    clearAll();
+    currentValue = '';
+    previousValue = '';
+    operator = '';
+    screenCurrent.value = '';
+    screenPrevious.value = '';
 })
 
 backspace.addEventListener("click", function() {
@@ -42,19 +44,6 @@ equal.addEventListener("click", function() {
 });
 
 /// FUNCIONES
-
-function handleKeyboard(e) {
-    if (e.key >= 0 && e.key <= 9) handleNumber(e.key);
-    if (e.key === '=' || e.key === 'Enter') calculate();
-    if (e.key === 'Backspace') del();
-    if (e.key === 'Escape') clearAll();
-    if (e.key === '+' || e.key === '-' || e.key === 'x' || e.key === '/') {
-      handleOperator(e.key);
-      screenPrevious.value = previousValue + " " + operator;
-    }
-
-    screenCurrent.value = currentValue;
-}
 
 function handleNumber(num) {
     if (currentValue.length <= 6) {
@@ -91,7 +80,7 @@ function calculate() {
         previousValue -= currentValue;
     } else if (operator === 'x') {
         previousValue *= currentValue;
-    } else if (operator === '/'){
+    } else {
         previousValue /= currentValue;
     }
 
@@ -108,12 +97,4 @@ function roundNumber(num) {
 function del() {
     currentValue = currentValue.slice(0, -1);
     screenCurrent.value = currentValue;
-}
-
-function clearAll() {
-    currentValue = '';
-    previousValue = '';
-    operator = '';
-    screenCurrent.value = '';
-    screenPrevious.value = ''; 
 }
