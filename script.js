@@ -83,8 +83,6 @@ function calculate() {
     previousValue = previousValue.toString();
 
     currentValue = previousValue.toString();
-
-    console.log(previousValue);
 }
 
 function roundNumber(num) {
