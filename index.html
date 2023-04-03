@@ -24,28 +24,28 @@
             </div>
             <div class="buttons">
                 <div class="button-row">
-                    <button class="button" onclick="insert('7')">7</button>
-                    <button class="button" onclick="insert('8')">8</button>
-                    <button class="button" onclick="insert('9')">9</button>
-                    <button class="button" onclick="insert('*')">*</button>
+                    <button class="button number">7</button>
+                    <button class="button number">8</button>
+                    <button class="button number">9</button>
+                    <button class="button operator">*</button>
                 </div>
                 <div class="button-row">
-                    <button class="button" onclick="insert('4')">4</button>
-                    <button class="button" onclick="insert('5')">5</button>
-                    <button class="button" onclick="insert('6')">6</button>
-                    <button class="button" onclick="insert('-')">-</button>
+                    <button class="button number">4</button>
+                    <button class="button number">5</button>
+                    <button class="button number">6</button>
+                    <button class="button operator">-</button>
                 </div>
                 <div class="button-row">
-                    <button class="button" onclick="insert('1')">1</button>
-                    <button class="button" onclick="insert('2')">2</button>
-                    <button class="button" onclick="insert('3')">3</button>
-                    <button class="button" onclick="insert('+')">+</button>
+                    <button class="button number">1</button>
+                    <button class="button number">2</button>
+                    <button class="button number">3</button>
+                    <button class="button operator">+</button>
                 </div>
                 <div class="button-row">
                     <button class="button del" onclick="del()">DEL</button>
-                    <button class="button zero" onclick="insert('0')">0</button>
-                    <button class="button" onclick="insert('/')">/</button>
-                    <button class="button equal" onclick="operate(operator, firstNumber, expression)">=</button>
+                    <button class="button number zero">0</button>
+                    <button class="button operator">/</button>
+                    <button class="button equal" onclick="operate(operator, previousValue, currentValue)">=</button>
                 </div>
             </div>
         </div>

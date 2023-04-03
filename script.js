@@ -1,76 +1,95 @@
 /// UI
-const screen = document.querySelector('#result');
+const clear = document.querySelector('.clear');
+const equal = document.querySelector('.equal');
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+
+const screenCurrent = document.querySelector('#result');
+const screenPrevious = document.querySelector("#result-previous");
 
 
-let expression = '';
-let firstNumber;
-let secondNumber;
+screenPrevious.value = 2;
+
+let currentValue = '';
+let previousValue = '';
 let operator = '';
+
+/// EventListeners
+
+numbers.forEach((number) => number.addEventListener("click", function(e) {
+    handleNumber(e.target.textContent);
+    screenCurrent.value = currentValue;
+}));
+
 
 /// FUNCIONES
 
+function handleNumber(num) {
+    if (currentValue.length <= 6) {
+        currentValue += num;
+    }
+}
+/*
 function insert(value) {
     if (value == "+") {
-        firstNumber = expression;
-        expression = '';
+        previousValue = currentValue;
+        currentValue = '';
         operator = "+";
     } else if (value == "-") {
-        firstNumber = expression;
-        expression = '';
+        previousValue = currentValue;
+        currentValue = '';
         operator = "-";
     } else if (value == '*') {
-        firstNumber = expression;
-        expression = '';
+        previousValue = currentValue;
+        currentValue = '';
         operator = "*";
     } else if (value == '/') {
-        firstNumber = expression;
-        expression = '';
+        previousValue = currentValue;
+        currentValue = '';
         operator = "/";
     } 
 
-    expression += value;
-    screen.value = expression;
-    console.log(operator);
-    console.log(expression);
-
-
+    currentValue += value;
+    screenCurrent.value = currentValue;
 }
+*/
 
 function clearScreen() {
-    expression = '';
-    screen.value = '';
-    firstNumber = "";
+    currentValue = '';
+    screenCurrent.value = '';
+    screenPrevious.value = '';
+    previousValue = "";
     operator = "";
 }
 
 function del() {
-    expression = expression.slice(0, -1);
-    screen.value = expression;
+    currentValue = currentValue.slice(0, -1);
+    screenCurrent.value = currentValue;
 }
 
 
 function add(a, b) {
-    firstNumber = "";
-    expression = a + b;
-    screen.value = expression;
+    previousValue = a + b;
+    currentValue = '';
+    screenCurrent.value = previousValue;
 }
 
 function subtract(a, b) {
-    firstNumber = "";
-    expression = a - b;
-    screen.value = expression;
+    previousValue = a - b;
+    currentValue = '';
+    screenCurrent.value = previousValue;
 }
 
 function multiply(a, b) {
-    firstNumber = "";
-    expression = a * b;
-    screen.value = expression;
+    previousValue = "";
+    currentValue = a * b;
+    screenCurrent.value = currentValue;
 }
 
 function divide(a, b) {
-    firstNumber = "";
-    expression = (a / b);
-    screen.value = expression;
+    previousValue = "";
+    currentValue = (a / b);
+    screenCurrent.value = currentValue;
 }
 
 function operate(operator, a, b) {
