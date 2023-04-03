@@ -3,6 +3,7 @@ const clear = document.querySelector('.clear');
 const equal = document.querySelector('.equal');
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
+const backspace = document.querySelector('.del');
 
 const screenCurrent = document.querySelector('#result');
 const screenPrevious = document.querySelector("#result-previous");
@@ -32,8 +33,12 @@ clear.addEventListener("click", function() {
     screenPrevious.value = '';
 })
 
+backspace.addEventListener("click", function() {
+    del();
+})
+
 equal.addEventListener("click", function() {
-    
+
     if (currentValue != '' && previousValue != '') {
         calculate();
         screenPrevious.value = '';
@@ -88,30 +93,5 @@ function roundNumber(num) {
 
 function del() {
     currentValue = currentValue.slice(0, -1);
-    screenCurrent.value = currentValue;
-}
-
-
-function add(a, b) {
-    previousValue = a + b;
-    currentValue = '';
-    screenCurrent.value = previousValue;
-}
-
-function subtract(a, b) {
-    previousValue = a - b;
-    currentValue = '';
-    screenCurrent.value = previousValue;
-}
-
-function multiply(a, b) {
-    previousValue = "";
-    currentValue = a * b;
-    screenCurrent.value = currentValue;
-}
-
-function divide(a, b) {
-    previousValue = "";
-    currentValue = (a / b);
     screenCurrent.value = currentValue;
 }
