@@ -42,10 +42,10 @@ equal.addEventListener("click", function() {
     if (currentValue != '' && previousValue != '') {
         calculate();
         screenPrevious.value = '';
-        if (previousValue.length <= 6) {
+        if (previousValue.length <= 8) {
             screenCurrent.value = previousValue;
         } else {
-            screenCurrent.value = previousValue.slice(0, 6) + "...";
+            screenCurrent.value = previousValue.slice(0, 8) + "...";
         }
     }
 
@@ -54,7 +54,7 @@ equal.addEventListener("click", function() {
 /// FUNCIONES
 
 function handleNumber(num) {
-    if (currentValue.length <= 6) {
+    if (currentValue.length <= 8) {
         currentValue += num;
     }
 }
