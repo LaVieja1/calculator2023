@@ -39,7 +39,15 @@ backspace.addEventListener("click", function() {
 
 equal.addEventListener("click", function() {
 
-    checkCalculate();
+    if (currentValue != '' && previousValue != '') {
+        calculate();
+        screenPrevious.value = '';
+        if (previousValue.length <= 6) {
+            screenCurrent.value = previousValue;
+        } else {
+            screenCurrent.value = previousValue.slice(0, 6) + "...";
+        }
+    }
 
 });
 
@@ -52,22 +60,9 @@ function handleNumber(num) {
 }
 
 function handleOperator(op) {
-    checkCalculate();
     operator = op;
     previousValue = currentValue;
     currentValue = '';
-}
-
-function checkCalculate() {
-    if (currentValue != '' && previousValue != '') {
-        calculate();
-        screenPrevious.value = '';
-        if (previousValue.length <= 9) {
-            screenCurrent.value = previousValue;
-        } else {
-            screenCurrent.value = previousValue.slice(0, 9) + "...";
-        }
-    }
 }
 
 function calculate() {
