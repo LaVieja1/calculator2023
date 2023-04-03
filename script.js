@@ -24,6 +24,13 @@ operators.forEach((op) => op.addEventListener("click", function(e) {
     screenCurrent.value = currentValue;
 }));
 
+clear.addEventListener("click", function() {
+    currentValue = '';
+    previousValue = '';
+    operator = '';
+    screenCurrent.value = '';
+    screenPrevious.value = '';
+})
 
 /// FUNCIONES
 
@@ -63,14 +70,6 @@ function insert(value) {
     screenCurrent.value = currentValue;
 }
 */
-
-function clearScreen() {
-    currentValue = '';
-    screenCurrent.value = '';
-    screenPrevious.value = '';
-    previousValue = "";
-    operator = "";
-}
 
 function del() {
     currentValue = currentValue.slice(0, -1);
